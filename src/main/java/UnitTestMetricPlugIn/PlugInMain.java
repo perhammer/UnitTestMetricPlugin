@@ -15,7 +15,6 @@ public class PlugInMain extends AbstractMojo 	{
     	Not been able to test due to issues with running the plugin via command line and plug in set up
     	 */
     	getLog().info( "Code inspection for unit test classes" );
-    	ToolMain runthemain = new ToolMain();
        
     }
 }

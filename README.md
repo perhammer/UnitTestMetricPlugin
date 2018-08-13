@@ -11,3 +11,5 @@ Maven plugin still in progress. Can run the plugin from command line using;
 mvn unittestmetricplugin:MavenUnitTestingMetricSuite-maven-plugin:1.0-SNAPSHOT:metrictesting
 Trying to execute plugin will result in the output "Code inspection for unit test classes"
 
+Can run from command line using mvn exec:java -Dexec.mainClass="UnitTestMetricPlugIn.ToolMain"
+
