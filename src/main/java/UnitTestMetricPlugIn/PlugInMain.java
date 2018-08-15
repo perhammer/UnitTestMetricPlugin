@@ -7,16 +7,14 @@ import org.apache.maven.plugins.annotations.Mojo;
 	
 @Mojo(name = "metrictesting")
 
-public class PluginMain extends AbstractMojo 	{
+public class PlugInMain extends AbstractMojo 	{
 	
 	Parameter 
 	ToolMain;
 	
 	    public void execute() throws MojoExecutionException
 	    {
-	    	getLog().info( "Code inspection for unit test classes" );
+	    	getLog().info( "A Code inspection tool for unit test classes" );
 	    	ToolMain.getClass();
 	    }
 	}
-
-
