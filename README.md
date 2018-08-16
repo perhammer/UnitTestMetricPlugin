@@ -13,3 +13,26 @@ Trying to execute plugin will result in the output "Code inspection for unit tes
 
 Can run from command line using mvn exec:java -Dexec.mainClass="UnitTestMetricPlugIn.ToolMain"
 
+
+Current implemented metrics 
+
+Assertions per method; checks for at least one and no more than five assertions 
+
+Class calls per method; checks for at least one and no more than five class calls 
+
+Method calls per methods; checks for at least one and no more than five method calls 
+
+Structure; checks test method matches AAA structure 
+
+TestName; checks for should or test in name, checks no more than three ands and that the name is no less than 10 letters and no longer than 50 letters 
+
+Badsmells; checks for system.out and thread.sleep 
+
+Line count; checks for no less than five and no longer than 50
+
+Test doubles; checks for no more than five test doubles 
+
+Test spies; checks for no more than five test spies 
+
+Test stubs; checks for no more than five test stubs 
+
