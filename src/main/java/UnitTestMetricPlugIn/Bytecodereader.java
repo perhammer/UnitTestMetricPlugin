@@ -119,8 +119,8 @@ public class Bytecodereader{
 		//Creates unittest string from string builder builder 
 		String unittest = builder.toString();
 		
-		/*creates array for each test method, set as six manually however would need method which counted 
-		 * number of test methods in actual tool
+		/*creates array for each test method, uses the 
+		 * number of test methods in test class 
 		 */
 		String methodtext[] = new String[numberofmethod * 2]; //Can pass in the number of methods 
 		methodtext = unittest.split("@Test");
