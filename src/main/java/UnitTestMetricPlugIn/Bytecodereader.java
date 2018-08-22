@@ -149,6 +149,9 @@ public class Bytecodereader{
 			String methodname = method.getName();
 			Code methodcontent = null;
 			
+			if(methodname.contains("init>")) {
+				index++;
+			} else {
 			methodcontent = method.getCode();
 			TestMethods[index] = "" + methodcontent;
 			System.out.print("In method " + methodname + ": \n");
@@ -166,7 +169,7 @@ public class Bytecodereader{
 			Testname(methodname, unittestbuilder); 
 			
 			index++;
-			
+			}
 		}
 		
 		File unitteststats = new File("UnitTestMetricsInfo.html");
