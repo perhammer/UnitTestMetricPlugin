@@ -122,7 +122,7 @@ public class Bytecodereader{
 		/*creates array for each test method, set as six manually however would need method which counted 
 		 * number of test methods in actual tool
 		 */
-		String methodtext[] = new String[numberofmethod]; //Can pass in the number of methods 
+		String methodtext[] = new String[numberofmethod * 2]; //Can pass in the number of methods 
 		methodtext = unittest.split("@Test");
 		
 		StringBuilder unittestbuilder = new StringBuilder();
@@ -146,14 +146,17 @@ public class Bytecodereader{
 		 */
 		for (Method method:TestClass.getMethods()) {
 			
-			Code methodcontent = method.getCode();
 			String methodname = method.getName();
+			Code methodcontent = null;
+			
+			methodcontent = method.getCode();
 			TestMethods[index] = "" + methodcontent;
 			System.out.print("In method " + methodname + ": \n");
 			methodnameinfo = "<p> In method " + methodname + "<div>";
 			unittestbuilder.append(methodnameinfo);
-			
-			Linecount(methodtext[index], unittestbuilder); 
+		
+			//Linecount(methodtext[index], unittestbuilder); 
+			//Linecount metric is causing array out of bounds exceptions solution being worked on
 			AssertPerMethod(TestMethods[index], unittestbuilder);
 			ClassCallsPerMethod(TestMethods[index], unittestbuilder);
 			MethodCallsPerMethod(TestMethods[index], unittestbuilder);
@@ -605,11 +608,11 @@ public class Bytecodereader{
 		if(unusualtestname == true || longshorttestname == true || multipleands == true || namingconvention == false) {
 			worryingtestname = true;
 			System.out.print("There is a potential issue with the name of this test method:" + tomanyands + wronglength + conventionofnaming + "\n\n");
-			String testnameout = "<p style = 'color:red'> There is a potential issue with the name of this test method: " + tomanyands + wronglength + conventionofnaming + "<div><div><div>";
+			String testnameout = "<p style = 'color:red'> There is a potential issue with the name of this test method: " + tomanyands + wronglength + conventionofnaming + "<div><div><div><div><div><div><div><div><div>";
 			build.append(testnameout);
 		} else {
 			System.out.print("There is no indication of a potential issue with the name of this testmethod \n\n");
-			String testnameout = "There is no indication of a potential issues with the name of this testmethod <div><div><div>"; 
+			String testnameout = "There is no indication of a potential issues with the name of this testmethod <div><div><div><div><div><div><div><div><div>"; 
 			build.append(testnameout); 
 			worryingtestname = false;
 		
