@@ -512,7 +512,7 @@ public class Bytecodereader{
 		
 		foundsystemout = methods.contains("System.out");
 		
-		foundlogic = methods.contains(" if ") || methods.contains(" for ") || methods.contains(" while ") || methods.contains(" switch "); 
+		foundlogic = methods.contains(" if") || methods.contains(" for") || methods.contains(" while") || methods.contains(" switch"); 
 		
 		if(foundthreadsleep == true) {
 			badsmell = "thread.sleep";
