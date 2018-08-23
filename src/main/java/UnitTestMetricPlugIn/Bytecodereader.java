@@ -144,6 +144,7 @@ public class Bytecodereader{
 		 * double also counts as a method call. 
 		 * Method calls + ClassCalls = need to add count of unique method/class calls 
 		 */
+		String Testclassname = TestClass.getClassName();
 		for (Method method:TestClass.getMethods()) {
 			
 			String methodname = method.getName();
@@ -172,7 +173,7 @@ public class Bytecodereader{
 			}
 		}
 		
-		File unitteststats = new File("UnitTestMetricsInfo.html");
+		File unitteststats = new File(Testclassname + "UnitTestMetricsInfo.html");
 		
 		try {
 			//Writes html code to .html file
