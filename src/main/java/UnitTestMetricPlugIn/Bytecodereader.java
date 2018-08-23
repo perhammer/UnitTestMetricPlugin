@@ -42,7 +42,7 @@ public class Bytecodereader{
 		
 
 		
-		FileDialog fdjava = new FileDialog(yourJFrame, "Choose your .java file \n", FileDialog.LOAD);
+		FileDialog fdjava = new FileDialog(yourJFrame, "Choose your .java file \n\n", FileDialog.LOAD);
 	
 		fdjava.setVisible(true);
 		String javafilename = fdjava.getFile();
@@ -125,8 +125,10 @@ public class Bytecodereader{
 		String methodtext[] = new String[numberofmethod * 2]; //Can pass in the number of methods 
 		methodtext = unittest.split("@Test");
 		
+		String Testclassname = TestClass.getClassName();
+		
 		StringBuilder unittestbuilder = new StringBuilder();
-		String infoforunittest = "<h1> Information on unit test class <h1>";
+		String infoforunittest = "<h1> Information on " + Testclassname +"<h1>";
 		unittestbuilder.append(infoforunittest); 
 		String methodnameinfo = "";
 	
@@ -144,7 +146,6 @@ public class Bytecodereader{
 		 * double also counts as a method call. 
 		 * Method calls + ClassCalls = need to add count of unique method/class calls 
 		 */
-		String Testclassname = TestClass.getClassName();
 		for (Method method:TestClass.getMethods()) {
 			
 			String methodname = method.getName();
@@ -220,8 +221,9 @@ public class Bytecodereader{
 			if(currentletter == 'a' && secondletter == 's' && thirdletter == 's' && forthletter == 'e' && fifthletter == 'r' && sixthletter == 't') {
 				assertions++;
 				index++;
-					} else 
+			} else {
 						index++;
+					}
 	}
 		System.out.print("The number of assertions is " + assertions + "\n");
 		String assertoutput = "The number of assertions is " + assertions + "<div>";
@@ -473,25 +475,33 @@ public class Bytecodereader{
 		boolean foundsystemout = false;
 		boolean foundtimeout = false; //Not yet implemented 
 		boolean foundtimeordate = false; //Not yet implemented 
+		boolean foundlogic = false;
 		
 		boolean badsmells = false; 
 		String badsmell = "";
 		
-		foundthreadsleep = methods.contains("Thread.sleep");
+		foundthreadsleep = methods.contains(".sleep");
 		
 		foundsystemout = methods.contains("System.out");
+		
+		foundlogic = methods.contains("if") || methods.contains("for") || methods.contains("while") || methods.contains("switch"); 
 		
 		if(foundthreadsleep == true) {
 			badsmell = "thread.sleep";
 		}
 		
 		if(foundsystemout == true) {
-			badsmell = badsmell + "System.out";
+			badsmell = badsmell + " System.out ";
 		}
-		if(foundthreadsleep == true || foundsystemout == true) {
+		
+		if(foundlogic == true) {
+			badsmell = badsmell + " logic (if, for, while, switch) "; 
+		}
+		
+		if(foundthreadsleep == true || foundsystemout == true || foundlogic == true) {
 		badsmells = true; 
 		System.out.print("Method " + nameofmethod + " contains a bad smell: " + badsmell + "\n");
-		String badsmellout = "The Method contains a bad smell: " + badsmell + "";
+		String badsmellout = "The Method contains a bad smell: " + badsmell + "<div>";
 		build.append(badsmellout); 
 		return true;
 		} else {
@@ -503,7 +513,7 @@ public class Bytecodereader{
 		
 		int specialindex = methods.indexOf("invokespecial"); 
 		int virtualindex = methods.indexOf("invokevirtual");
-		int staticindex = methods.indexOf("invokestatic");
+		int staticindex = methods.indexOf("assert");
 		
 		if(specialindex < virtualindex && virtualindex < staticindex) {
 			Structure = true;
