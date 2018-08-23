@@ -156,7 +156,7 @@ public class Bytecodereader{
 			} else {
 			methodcontent = method.getCode();
 			TestMethods[index] = "" + methodcontent;
-			System.out.print("In method " + methodname + ": \n");
+			System.out.print("\nIn method " + methodname + ": \n");
 			methodnameinfo = "<p> In method " + methodname + "<div>";
 			unittestbuilder.append(methodnameinfo);
 		
@@ -210,19 +210,47 @@ public class Bytecodereader{
 		int index = 0;
 		int assertions = 0;
 		
-		while(index <= methods.length() - 10) { //Have to minus 10 to stop String index out of bounds exception 
+		while(index <= methods.length() - 20) { //Have to minus 10 to stop String index out of bounds exception 
 			char currentletter = methods.charAt(index);
 			char secondletter = methods.charAt(index + 1);
 			char thirdletter = methods.charAt(index + 2);
 			char forthletter = methods.charAt(index + 3);
 			char fifthletter = methods.charAt(index + 4);
 			char sixthletter = methods.charAt(index + 5);
+			char seventhletter = methods.charAt(index + 6);
+			char eightletter = methods.charAt(index + 7);
+			char nineletter = methods.charAt(index + 8);
+			char tenletter = methods.charAt(index + 9);
+			char elevenletter = methods.charAt(index + 10);
+			char twelveletter = methods.charAt(index + 11);
+			char thirteenletter = methods.charAt(index + 12);
 
-			if(currentletter == 'a' && secondletter == 's' && thirdletter == 's' && forthletter == 'e' && fifthletter == 'r' && sixthletter == 't') {
+			if(currentletter == 'a' && secondletter == 's' && thirdletter == 's' && forthletter == 'e' && fifthletter == 'r' && sixthletter == 't' && seventhletter == 'E' && eightletter == 'q'  && nineletter == 'u' && tenletter == 'a' && elevenletter == 'l' && twelveletter == 's') {
 				assertions++;
 				index++;
-			} else {
+			} else if (currentletter == 'a' && secondletter == 's' && thirdletter == 's' && forthletter == 'e' && fifthletter == 'r' && sixthletter == 't' && seventhletter == 'F' && eightletter == 'a'  && nineletter == 'l' && tenletter == 's' && elevenletter == 'e') {
+				assertions++;
 						index++;
+					} else if (currentletter == 'a' && secondletter == 's' && thirdletter == 's' && forthletter == 'e' && fifthletter == 'r' && sixthletter == 't' && seventhletter == 'N' && eightletter == 'o'  && nineletter == 't' && tenletter == 'N' && elevenletter == 'u' && twelveletter == 'l') {
+						assertions++;
+						index++;
+					} else if (currentletter == 'a' && secondletter == 's' && thirdletter == 's' && forthletter == 'e' && fifthletter == 'r' && sixthletter == 't' && seventhletter == 'N' && eightletter == 'o'  && nineletter == 't' && tenletter == 'S' && elevenletter == 'a' && twelveletter == 'm') {
+						assertions++;
+						index++;
+					} else if (currentletter == 'a' && secondletter == 's' && thirdletter == 's' && forthletter == 'e' && fifthletter == 'r' && sixthletter == 't' && seventhletter == 'N' && eightletter == 'u'  && nineletter == 'l' && tenletter == 'l'){
+						assertions++;
+						index++;
+					} else if (currentletter == 'a' && secondletter == 's' && thirdletter == 's' && forthletter == 'e' && fifthletter == 'r' && sixthletter == 't' && seventhletter == 'S' && eightletter == 'a'  && nineletter == 'm' && tenletter == 'e') {
+						assertions++;
+						index++;
+					} else if (currentletter == 'a' && secondletter == 's' && thirdletter == 's' && forthletter == 'e' && fifthletter == 'r' && sixthletter == 't' && seventhletter == 'T' && eightletter == 'h'  && nineletter == 'a' && tenletter == 't' ) {
+						assertions++;
+						index++;
+					} else if (currentletter == 'a' && secondletter == 's' && thirdletter == 's' && forthletter == 'e' && fifthletter == 'r' && sixthletter == 't' && seventhletter == 'T' && eightletter == 'r'  && nineletter == 'u' && tenletter == 'e') {
+						assertions++;
+						index++;
+					} else {
+						index++; 
 					}
 	}
 		System.out.print("The number of assertions is " + assertions + "\n");
@@ -484,7 +512,7 @@ public class Bytecodereader{
 		
 		foundsystemout = methods.contains("System.out");
 		
-		foundlogic = methods.contains("if") || methods.contains("for") || methods.contains("while") || methods.contains("switch"); 
+		foundlogic = methods.contains(" if ") || methods.contains(" for ") || methods.contains(" while ") || methods.contains(" switch "); 
 		
 		if(foundthreadsleep == true) {
 			badsmell = "thread.sleep";
