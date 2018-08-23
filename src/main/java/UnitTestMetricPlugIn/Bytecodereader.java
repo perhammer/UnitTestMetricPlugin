@@ -235,12 +235,12 @@ public class Bytecodereader{
 		if(numberofasserts <= 0) {
 			notenoughassertions = true;
 			System.out.print("Test method may not have enough assert statements \n");
-			String assertions = "<p style = 'color:red'> Test method may not have enough assert statements <div>";
+			String assertions = "Test method may not have enough assert statements <div>";
 			buildstr.append(assertions);
 		} else if (numberofasserts >= 5) {
 			tomanyassertions = true; 
 			System.out.print("The test method may have to many assertions");
-			String assertions = "<p style = 'color:red'> Test method may have to many assertions <div>";
+			String assertions = "Test method may have to many assertions <div>";
 			buildstr.append(assertions); 
 		}
 		return tomanyassertions;
@@ -277,12 +277,12 @@ public class Bytecodereader{
 		if(numberofclasscalls >= 5) {
 			System.out.print("The test method may have to many class calls \n");
 			tomanyclasscalls = true; 
-			String classnum = "<p style = 'color:red'> The test method may have to many class calls <div>";
+			String classnum = "The test method may have to many class calls <div>";
 			buildstr.append(classnum);
 		} else if(numberofclasscalls <= 0) {
 			System.out.print("The test method may not have enough class calls \n");
 			tolittleclasscalls = true;
-			String classnum = "<p style = 'color:red'> The test method may not have enough class calls <div>"; 
+			String classnum = "The test method may not have enough class calls <div>"; 
 			buildstr.append(classnum); 
 		}
 	
@@ -321,12 +321,12 @@ public class Bytecodereader{
 		if(numberofmethodcalls >= 5) {
 			System.out.print("The test method may have to many method calls \n");
 			tomanymethodcalls = true; 
-			String methodnum = "<p style = 'color:red'>The test method may have to many method calls <div>"; 
+			String methodnum = "The test method may have to many method calls <div>"; 
 			buildstr.append(methodnum);
 		} else if(numberofmethodcalls <= 0) {
 			System.out.print("The test method may not have enough method calls \n");
 			tolittlemethodcalls = true;
-			String methodnum = "<p style = 'color:red'> The test method may not have enough method calls <div>";
+			String methodnum = "The test method may not have enough method calls <div>";
 			buildstr.append(methodnum);
 		}
 		return tomanymethodcalls;
@@ -361,7 +361,7 @@ public class Bytecodereader{
 		
 		if(numberofteststubs >= 5) {
 			System.out.print("Method may have to many test stubs \n");
-			String stubnum = "<p style = 'color:red'> Method may have to many test stubs <div>"; 
+			String stubnum = "Method may have to many test stubs <div>"; 
 			tomanyteststubs = true;
 		}
 		
@@ -399,7 +399,7 @@ public class Bytecodereader{
 		
 		if(numberoftestspies >= 5) {
 			System.out.print("Method may have to many test spies \n");
-			String testspiesnum = "<p style = 'color:red'> Method may have to many test spies <div>"; 
+			String testspiesnum = "Method may have to many test spies <div>"; 
 			tomanytestspies = true;
 		}
 		return tomanytestspies;
@@ -442,7 +442,7 @@ public class Bytecodereader{
 		
 		if(numberoftestdoubles >= 5) {
 			System.out.print("Method may have to many test doubles \n");
-			String doublenum = "<p style = 'color:red'> Method may have to many test doubles <div>"; 
+			String doublenum = "Method may have to many test doubles <div>"; 
 			strbuild.append(doublenum); 
 			tomanytestdoubles = true;
 		}
@@ -490,7 +490,7 @@ public class Bytecodereader{
 		if(foundthreadsleep == true || foundsystemout == true) {
 		badsmells = true; 
 		System.out.print("Method " + nameofmethod + " contains a bad smell: " + badsmell + "\n");
-		String badsmellout = " <p style = 'color:red'> The Method contains a bad smell: " + badsmell + "<div>";
+		String badsmellout = "The Method contains a bad smell: " + badsmell + "";
 		build.append(badsmellout); 
 		return true;
 		} else {
@@ -507,12 +507,12 @@ public class Bytecodereader{
 		if(specialindex < virtualindex && virtualindex < staticindex) {
 			Structure = true;
 			System.out.print("Method " + nameofmethod + " matches the recommended triple A structure \n");
-			String structureout = " The Method matches the recommended triple a structure <div>"; 
+			String structureout = "The Method matches the recommended triple a structure <div>"; 
 			build.append(structureout); 
 		} else {
 			Structure = false;
 			System.out.print("Method " + nameofmethod + " doesn't match the recommended triple A structure \n");
-			String structureout = "<p style = 'color:red'> The Method doesn't match the recommended triple A structure <div>";
+			String structureout = "The Method doesn't match the recommended triple A structure <div>";
 			build.append(structureout); 
 		}
 		return Structure;
@@ -523,16 +523,16 @@ public class Bytecodereader{
 		String[] lines = textmethod.split("\r\n|\r|\n");
 		linecount = lines.length;
 		System.out.print("The method has " + linecount + " lines \n");
-		String linecountoutput = "The method has " + linecount + " lines <div>"; 
+		String linecountoutput = "The method has " + linecount + " lines"; 
 		build.append(linecountoutput);
 		
 		if(linecount <= 5) {
 			System.out.print("Method may be to short \n");
-			String numlinecount = "<p style = 'color:red'> Method may be to short <div>";
+			String numlinecount = "Method may be to short <div>";
 			build.append(numlinecount);
 		} else if (linecount >= 50) {
 			System.out.print("Method may be to long \n");
-			String numlinecount = "<p style = 'color:red'> Method may be to long <div>";
+			String numlinecount = "Method may be to long <div>";
 			build.append(numlinecount); 
 		} else {
 		return linecount;
@@ -611,7 +611,7 @@ public class Bytecodereader{
 		if(unusualtestname == true || longshorttestname == true || multipleands == true || namingconvention == false) {
 			worryingtestname = true;
 			System.out.print("There is a potential issue with the name of this test method:" + tomanyands + wronglength + conventionofnaming + "\n\n");
-			String testnameout = "<p style = 'color:red'> There is a potential issue with the name of this test method: " + tomanyands + wronglength + conventionofnaming + "<div><div><div><div><div><div><div><div><div>";
+			String testnameout = "There is a potential issue with the name of this test method: " + tomanyands + wronglength + conventionofnaming + "<div><div><div><div><div><div><div><div><div>";
 			build.append(testnameout);
 		} else {
 			System.out.print("There is no indication of a potential issue with the name of this testmethod \n\n");
