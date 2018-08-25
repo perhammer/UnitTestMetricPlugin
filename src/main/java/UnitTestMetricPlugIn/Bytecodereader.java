@@ -270,7 +270,7 @@ public class Bytecodereader{
 			buildstr.append(assertions);
 		} else if (numberofasserts >= 5) {
 			tomanyassertions = true; 
-			System.out.print("The test method may have to many assertions");
+			System.out.print("The test method may have to many assertions \n");
 			String assertions = "Test method may have to many assertions <div>";
 			buildstr.append(assertions); 
 		}
@@ -605,10 +605,12 @@ public class Bytecodereader{
 		String conventionofnaming = "";
 		String namepattern = ""; 
 		
-		shouldcontain = nameofmethod.contains("should"); //Want to make sure this is case sensitive 
-		testcontain = nameofmethod.contains("test"); //Want to make sure this is case sensitive 
+		shouldcontain = nameofmethod.contains("should"); 
+		testcontain = nameofmethod.contains("test"); 
+		boolean TestContain = nameofmethod.contains("Test");
+		boolean ShouldContain = nameofmethod.contains("Should");
 		
-		if(shouldcontain == true || testcontain == true) {
+		if(shouldcontain == true || testcontain == true || TestContain == true || ShouldContain == true) {
 			namingconvention = true;
 		} else {
 			conventionofnaming = " method name doesn't contain an instance of test or should";
