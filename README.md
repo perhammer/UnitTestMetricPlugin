@@ -28,11 +28,11 @@ TestName; checks for should or test in name, checks no more than three ands and 
 
 Badsmells; checks for system.out and thread.sleep 
 
-Line count; checks for no less than five and no longer than 50
-
 Test doubles; checks for no more than five test doubles 
 
 Test spies; checks for no more than five test spies 
 
 Test stubs; checks for no more than five test stubs 
+
+Line count; Has been implemented however currently commented out due to throwing array out of bounds exceptions 
 
