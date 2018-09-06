@@ -28,29 +28,8 @@ public class Bytecodereader {
     }
 
     public void classfilechoice() {
-        //Method to let the user chose there .class and .java file
-        JFrame yourJFrame = new JFrame();
-
-        FileDialog fd = new FileDialog(yourJFrame, "Choose your .class file \n", FileDialog.LOAD);
-
-        fd.setVisible(true);
-        String classfilename = fd.getFile();
-        if (classfilename == null) {
-            System.out.println("You cancelled the choice \n");
-        } else {
-            System.out.println("You chose " + classfilename);
-        }
-
-
-        FileDialog fdjava = new FileDialog(yourJFrame, "Choose your .java file \n\n", FileDialog.LOAD);
-
-        fdjava.setVisible(true);
-        String javafilename = fdjava.getFile();
-        if (javafilename == null) {
-            System.out.print("You cancelled the choice \n");
-        } else {
-            System.out.print("You chose " + javafilename + "\n");
-        }
+        String classfilename = FileChooser.chooseFile("Choose your .class file \n");
+        String javafilename = FileChooser.chooseFile("Choose your .java file \n\n");
 
         codereader(classfilename, javafilename);
 
