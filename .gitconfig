@@ -3,6 +3,3 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[user]
-	name = katlford31
-	email = 33235471+katlford31@users.noreply.github.com
