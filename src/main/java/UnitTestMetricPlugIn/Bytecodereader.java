@@ -40,9 +40,11 @@ public class Bytecodereader {
         try {
             TestClass = parser.parse();
         } catch (ClassFormatException e) {
-            System.out.println("Wrong format");
+            System.out.println("Wrong format; "+e.getMessage());
+            e.printStackTrace(System.err);
         } catch (IOException e) {
-            System.out.println("Class not found");
+            System.out.println("Class not found; "+e.getMessage());
+            e.printStackTrace(System.err);
         }
 
         for (Method method : TestClass.getMethods()) {
