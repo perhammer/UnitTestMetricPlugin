@@ -11,7 +11,7 @@ public class FileChooser {
         FileDialog fd = new FileDialog(yourJFrame, dialogTitle, FileDialog.LOAD);
 
         fd.setVisible(true);
-        String classfilename = fd.getFile();
+        String classfilename = fd.getDirectory()+fd.getFile();
         if (classfilename == null) {
             System.out.println("You cancelled the choice \n");
         } else {
