@@ -21,8 +21,8 @@ public class Bytecodereader {
     }
 
     public void classfilechoice() {
-        String classfilename = FileChooser.chooseFile("Choose your .class file \n");
-        String javafilename = FileChooser.chooseFile("Choose your .java file \n\n");
+        String classfilename = FileChooser.chooseFile("Choose your .class file \n", "class");
+        String javafilename = FileChooser.chooseFile("Choose your .java file \n\n", "java");
 
         JavaFileAnalyser.analyseJavaFile(javafilename);
         analyseClassFile(classfilename);
