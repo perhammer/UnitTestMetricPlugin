@@ -61,6 +61,16 @@
                 <target>6</target>
             </configuration>
         </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <configuration>
+                <excludes>
+                    <!-- stop surefire trying to execute the example files -->
+                    <exclude>**/(*.java</exclude>
+                </excludes>
+            </configuration>
+        </plugin>
     </plugins>
 </build>
 
