@@ -17,6 +17,7 @@ public class FileChooser {
         } else {
             System.out.println("You chose " + classfilename);
         }
+        yourJFrame.dispose();
         return classfilename;
     }
 }
